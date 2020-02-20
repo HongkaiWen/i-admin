@@ -1,10 +1,11 @@
 package com.github.hongkaiwen.iadmin
 
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.github.hongkaiwen.iadmin.core.Action
+import com.github.hongkaiwen.iadmin.core.Command
+import com.github.hongkaiwen.iadmin.core.CommandType
 
-fun main(args: Array<String>) = runBlocking<Unit> {
-  launch {
-    println("hello")
-  }
+fun main() {
+  var command = Command(CommandType.CALL_API, "curl https://ynuf.alipay.com/service/um.json")
+  var action = Action(command)
+  println(action.execute().toJSONString())
 }
